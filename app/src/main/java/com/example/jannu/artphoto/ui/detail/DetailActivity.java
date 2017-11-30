@@ -1,7 +1,9 @@
-package com.example.jannu.artphoto;
+package com.example.jannu.artphoto.ui.detail;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.jannu.artphoto.R;
 
 public class DetailActivity extends AppCompatActivity {
 
