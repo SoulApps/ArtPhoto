@@ -6,12 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.jannu.artphoto.R;
 import com.example.jannu.artphoto.base.model.ArtPicture;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,20 +69,23 @@ public class ArtListAdapter extends BaseAdapter {
     }
 
 
-    static class ViewHolder {
-        //todo butterknife binds
 
+    static class ViewHolder {
+        @BindView(R.id.fragment_art_lblTitle)
+        TextView fragmentArtLblTitle;
+        @BindView(R.id.fragment_art_lblAuthor)
+        TextView fragmentArtLblAuthor;
+        @BindView(R.id.fragment_art_lblYear)
+        TextView fragmentArtLblYear;
         public ViewHolder(View view) {
-            //ButterKnife.bind(this, view);
+            ButterKnife.bind(this, view);
         }
 
 
         public void bind(final ArtPicture artPicture) {
-            /*catListImgCat.setImageResource(avatar.getCatTag());
-            catListLblName.setText(avatar.getName());
-            catListLblMail.setText(avatar.getEmail());
-            catListLblPhone.setText(avatar.getPhone());
-            catListTxtWeb.setText(avatar.getWeb());*/
+            fragmentArtLblTitle.setText(artPicture.getTitle());
+            fragmentArtLblAuthor.setText(artPicture.getAuthor());
+            fragmentArtLblYear.setText(artPicture.getYear());
 
             //todo set data to the list
         }
