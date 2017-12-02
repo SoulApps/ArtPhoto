@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.jannu.artphoto.R;
+import com.example.jannu.artphoto.base.model.MangaBook;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,7 +40,7 @@ public class DetailFragment extends Fragment {
     private int mPosition;
     private Callback mListener;
 
-    public static DetailFragment newInstance(String item, int position) {
+    public static DetailFragment newInstance(MangaBook item, int position) {
         DetailFragment fragment = new DetailFragment();
         Bundle arguments = new Bundle();
         arguments.putInt(EXTRA_POSITION, position);

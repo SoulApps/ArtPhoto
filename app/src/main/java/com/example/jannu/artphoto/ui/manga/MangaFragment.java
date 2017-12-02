@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.jannu.artphoto.R;
+import com.example.jannu.artphoto.base.model.MangaBook;
 import com.example.jannu.artphoto.ui.main.MainActivityViewModel;
 import com.example.jannu.artphoto.utils.ConfigurationUtils;
 
@@ -40,7 +41,7 @@ public class MangaFragment extends Fragment {
 
     // Comunication interface with activity.
     public interface Callback {
-        void onItemSelected(String item, int position);
+        void onItemSelected(MangaBook item, int position);
 
         // When detail shown (even from backstack).
         void onDetailShown(int position);
@@ -103,7 +104,7 @@ public class MangaFragment extends Fragment {
 
     private void showItem(int position) {
         selectItem(position);
-        mListener.onItemSelected((String) fragment_manga_lstManga.getItemAtPosition(position), position);
+        mListener.onItemSelected((MangaBook) fragment_manga_lstManga.getItemAtPosition(position), position);
     }
 
     public void selectItem(int position) {

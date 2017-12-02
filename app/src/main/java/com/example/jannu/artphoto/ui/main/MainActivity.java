@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.jannu.artphoto.R;
+import com.example.jannu.artphoto.base.model.MangaBook;
 import com.example.jannu.artphoto.ui.detail.DetailActivity;
 import com.example.jannu.artphoto.ui.detail.DetailFragment;
 import com.example.jannu.artphoto.ui.manga.MangaFragment;
@@ -13,6 +14,8 @@ import com.example.jannu.artphoto.utils.ConfigurationUtils;
 import com.example.jannu.artphoto.utils.FragmentUtils;
 
 public class MainActivity extends AppCompatActivity implements MangaFragment.Callback {
+
+    //todo poner imagen al iniciar la actividad por primera vez
 
     private static final String TAG_MAIN_FRAGMENT = "TAG_MAIN_FRAGMENT";
     private static final String TAG_DETAIL_FRAGMENT = "TAG_DETAIL_FRAGMENT";
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements MangaFragment.Cal
     }
 
     @Override
-    public void onItemSelected(String item, int position) {
+    public void onItemSelected(MangaBook item, int position) {
         if (ConfigurationUtils.hasLandscapeOrientation(this)) {
             showDetailFragment(item, position);
         } else {
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements MangaFragment.Cal
         }
     }
 
-    private void showDetailFragment(String item, int position) {
+    private void showDetailFragment(MangaBook item, int position) {
         FragmentUtils.replaceFragmentAddToBackstack(getSupportFragmentManager(), R.id.detail_activity_frgSpace,
                 DetailFragment.newInstance(item, position), TAG_DETAIL_FRAGMENT, item,
                 FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
