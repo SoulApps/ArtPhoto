@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class DataFiller {
 
     private DataFiller(){}
+    private static ArrayList<MangaBook> bookList;
 
     public static ArrayList<MangaBook> fillData() {
         //create data
@@ -27,6 +28,12 @@ public class DataFiller {
         mangaBookList.add(new MangaBook("Tappei Nagatsuki",2012,"Re:Zero kara Hajimeru Isekai Seikatsu", R.drawable.rezero));
         mangaBookList.add(new MangaBook("Yūto Tsukuda",2012,"Shokugeki no Sōma", R.drawable.shokugeninosoma));
         //return arrayList
+        mangaBookList = mangaBookList;
         return mangaBookList;
+    }
+
+    public static MangaBook  getManga(int position){
+        MangaBook manga = bookList.get(position);
+        return manga;
     }
 }

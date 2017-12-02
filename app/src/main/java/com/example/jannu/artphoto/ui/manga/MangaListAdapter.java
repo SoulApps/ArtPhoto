@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.jannu.artphoto.R;
 import com.example.jannu.artphoto.base.model.MangaBook;
+import com.example.jannu.artphoto.ui.main.MainActivityViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +70,6 @@ public class MangaListAdapter extends BaseAdapter {
         holder.bind(mData.get(position));
     }
 
-
     static class ViewHolder {
         @BindView(R.id.fragment_manga_lblAuthor)
         TextView frgMangaLblAuthor;
@@ -88,6 +88,5 @@ public class MangaListAdapter extends BaseAdapter {
             frgMangaLblTitle.setText(mangaBook.getTitle());
             frgMangaLblYear.setText(String.valueOf(mangaBook.getYear()));
         }
-
     }
 }

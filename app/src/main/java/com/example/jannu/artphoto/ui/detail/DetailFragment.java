@@ -22,11 +22,11 @@ public class DetailFragment extends Fragment {
     // Communication interface.
     //Bind views
     @BindView(R.id.detail_fragment_imgDetail)
-    ImageView detail_fragment_imgDetail;
+    ImageView frgDetailImgDetail;
     @BindView(R.id.detail_fragment_lblAuthor)
-    TextView detail_fragment_lblAuthor;
+    TextView frgDetailLblAuthor;
     @BindView(R.id.detail_fragment_lblTitle)
-    TextView detail_fragment_lblTitle;
+    TextView frgDetailLblTitle;
 
     public interface Callback {
         void onDetailShown(int position);
@@ -37,26 +37,22 @@ public class DetailFragment extends Fragment {
 
     private TextView lblItem;
 
-    private int mPosition;
+    private static int mPosition;
+    private static MangaBook book;
     private Callback mListener;
 
     public static DetailFragment newInstance(MangaBook item, int position) {
         DetailFragment fragment = new DetailFragment();
-        Bundle arguments = new Bundle();
-        arguments.putInt(EXTRA_POSITION, position);
-        fragment.setArguments(arguments);
+        book = item;
+        mPosition = position;
         return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        obtainArguments();
     }
 
-    private void obtainArguments() {
-        mPosition = getArguments().getInt(EXTRA_POSITION);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -89,12 +85,14 @@ public class DetailFragment extends Fragment {
     }
 
     private void initViews(View view) {
-        ButterKnife.bind(view);
+        ButterKnife.bind(this,view);
     }
 
     private void showItem() {
         //todo mostrar imagen detalle pasando el res de la imagen
-        //lblItem.setText(mItem);
+        frgDetailImgDetail.setImageResource(book.getImageResId());
+        frgDetailLblTitle.setText(book.getTitle());
+        frgDetailLblAuthor.setText(book.getAuthor());
         // Notify activity (needed in case of landscape configuration).
         if (mListener != null) {
             mListener.onDetailShown(mPosition);

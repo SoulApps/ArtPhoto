@@ -15,17 +15,31 @@ public class DetailActivity extends AppCompatActivity implements DetailFragment.
     private static final String EXTRA_POSITION = "EXTRA_POSITION";
     private static final String EXTRA_ITEM = "EXTRA_ITEM";
     private static final String TAG_DETAIL_FRAGMENT = "TAG_DETAIL_FRAGMENT";
+    private MangaBook manga;
+    private int currentPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        obtainProfileData();
+        attachDetailFragment(manga,currentPos);
+    }
+
+    private void obtainProfileData() {
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if(intent.hasExtra(EXTRA_POSITION)){
+            currentPos = extras.getInt(EXTRA_POSITION);
+            manga = extras.getParcelable(EXTRA_ITEM);
+        }
+    }
+
+    private void attachDetailFragment(MangaBook book, int position) {
         if (getSupportFragmentManager().findFragmentByTag(TAG_DETAIL_FRAGMENT) == null) {
             FragmentUtils.replaceFragment(getSupportFragmentManager(), R.id.detail_activity_frgSpace,
-                    DetailFragment.newInstance(null,0), TAG_DETAIL_FRAGMENT);
-            //todo reemplazar null y 0 por el mangabook y la posicion del item recibido por el intent
+                    DetailFragment.newInstance(book,position), TAG_DETAIL_FRAGMENT);
         }
-        //getIntent().getExtras();
     }
 
     //intent

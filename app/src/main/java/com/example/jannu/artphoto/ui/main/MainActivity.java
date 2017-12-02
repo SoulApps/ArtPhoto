@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.example.jannu.artphoto.R;
 import com.example.jannu.artphoto.base.model.MangaBook;
@@ -13,12 +14,19 @@ import com.example.jannu.artphoto.ui.manga.MangaFragment;
 import com.example.jannu.artphoto.utils.ConfigurationUtils;
 import com.example.jannu.artphoto.utils.FragmentUtils;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements MangaFragment.Callback {
 
+    @BindView(R.id.fragment_manga_imgMangaPreview)
+    ImageView imgMangaPreview;
     //todo poner imagen al iniciar la actividad por primera vez
-
     private static final String TAG_MAIN_FRAGMENT = "TAG_MAIN_FRAGMENT";
     private static final String TAG_DETAIL_FRAGMENT = "TAG_DETAIL_FRAGMENT";
+    private MangaBook selectedBook;
+    private int selectedPosition;
+    private MainActivityViewModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +42,25 @@ public class MainActivity extends AppCompatActivity implements MangaFragment.Cal
                     DetailFragment.newInstance(getString(R.string.main_activity_no_item),
                             MainFragment.NO_ITEM_SELECTED), TAG_MAIN_FRAGMENT);
         }*/
+
     }
+
 
     @Override
     public void onItemSelected(MangaBook item, int position) {
         if (ConfigurationUtils.hasLandscapeOrientation(this)) {
             showDetailFragment(item, position);
+            selectedBook = item;
+            selectedPosition = position;
         } else {
+            selectedBook = item;
+            selectedPosition = position;
             DetailActivity.start(this, item, position);
         }
+    }
+    //change the current image
+    private void changeImage(ImageView img, int imageResId) {
+        img.setImageResource(imageResId);
     }
 
     private void showDetailFragment(MangaBook item, int position) {

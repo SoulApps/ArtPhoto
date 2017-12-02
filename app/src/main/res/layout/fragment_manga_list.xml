@@ -7,7 +7,7 @@
     tools:context="com.example.jannu.artphoto.ui.manga.MangaFragment">
 
     <ImageView
-        android:id="@+id/imgMangaPreview"
+        android:id="@+id/fragment_manga_imgMangaPreview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/bleach" />
 
 
     <ListView

@@ -13,6 +13,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h16:9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +26,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        tools:text="title of the image"
+        android:background="@drawable/lbl_year_shape"
         android:textColor="@android:color/background_light"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/detail_fragment_lblAuthor"
@@ -33,7 +34,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="title of the image" />
 
     <TextView
         android:id="@+id/detail_fragment_lblAuthor"
@@ -42,12 +44,13 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        tools:text="author of the pic"
+        android:background="@drawable/lbl_year_shape"
         android:textColor="@android:color/background_light"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="author of the pic" />
 
 </android.support.constraint.ConstraintLayout>

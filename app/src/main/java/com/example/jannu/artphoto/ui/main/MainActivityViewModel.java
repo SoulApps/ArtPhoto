@@ -1,6 +1,7 @@
 package com.example.jannu.artphoto.ui.main;
 
 import android.arch.lifecycle.ViewModel;
+import android.widget.ImageView;
 
 import com.example.jannu.artphoto.base.model.DataFiller;
 import com.example.jannu.artphoto.base.model.MangaBook;
@@ -20,6 +21,7 @@ public class MainActivityViewModel extends ViewModel {
 
     private List<MangaBook> items;
     private int selectedItem = NO_ITEM_SELECTED;
+    private ImageView img;
 
 
     public List<MangaBook> getItems() {
@@ -37,4 +39,11 @@ public class MainActivityViewModel extends ViewModel {
         this.selectedItem = selectedItem;
     }
 
+    public void setImageSource(ImageView imgManga) {
+        img = imgManga;
+    }
+
+    public ImageView getImage(){
+        return img;
+    }
 }
