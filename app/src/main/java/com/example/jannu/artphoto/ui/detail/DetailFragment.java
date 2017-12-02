@@ -36,14 +36,12 @@ public class DetailFragment extends Fragment {
 
     private TextView lblItem;
 
-    private String mItem;
     private int mPosition;
     private Callback mListener;
 
     public static DetailFragment newInstance(String item, int position) {
         DetailFragment fragment = new DetailFragment();
         Bundle arguments = new Bundle();
-        arguments.putString(EXTRA_ITEM, item);
         arguments.putInt(EXTRA_POSITION, position);
         fragment.setArguments(arguments);
         return fragment;
@@ -56,7 +54,6 @@ public class DetailFragment extends Fragment {
     }
 
     private void obtainArguments() {
-        mItem = getArguments().getString(EXTRA_ITEM);
         mPosition = getArguments().getInt(EXTRA_POSITION);
     }
 
@@ -95,7 +92,8 @@ public class DetailFragment extends Fragment {
     }
 
     private void showItem() {
-        lblItem.setText(mItem);
+        //todo mostrar imagen detalle pasando el res de la imagen
+        //lblItem.setText(mItem);
         // Notify activity (needed in case of landscape configuration).
         if (mListener != null) {
             mListener.onDetailShown(mPosition);

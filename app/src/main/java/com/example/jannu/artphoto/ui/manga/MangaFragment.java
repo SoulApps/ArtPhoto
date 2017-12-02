@@ -16,6 +16,8 @@ import com.example.jannu.artphoto.utils.ConfigurationUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
 
 
 public class MangaFragment extends Fragment {
@@ -133,7 +135,10 @@ public class MangaFragment extends Fragment {
         fragment_manga_lstManga.setAdapter(mAdapter);
         //lstItems.setOnItemClickListener((adapterView, v, position, id) -> showItem(position));
     }
-
+    @OnItemClick(R.id.fragment_manga_lstManga)
+    void onMangaListItemClick(int position){
+        showItem(position);
+    }
     // Needed in case activity is destroy because of low memory.
     @Override
     public void onSaveInstanceState(Bundle outState) {
