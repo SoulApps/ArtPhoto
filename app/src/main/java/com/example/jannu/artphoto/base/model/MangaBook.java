@@ -7,11 +7,11 @@ package com.example.jannu.artphoto.base.model;
 public class MangaBook {
 
     private String Author;
-    private String Year;
+    private int Year;
     private String Title;
     private int imageResId;
 
-    public MangaBook(String author, String year, String title, int imageResId) {
+    public MangaBook(String author, int year, String title, int imageResId) {
         Author = author;
         Year = year;
         Title = title;
@@ -26,11 +26,11 @@ public class MangaBook {
         Author = author;
     }
 
-    public String getYear() {
+    public int getYear() {
         return Year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         Year = year;
     }
 
