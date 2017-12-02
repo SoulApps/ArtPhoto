@@ -4,14 +4,14 @@ package com.example.jannu.artphoto.base.model;
  * Created by jannu on 11/30/17.
  */
 
-public class ArtPicture {
+public class MangaBook {
 
     private String Author;
     private String Year;
     private String Title;
     private int imageResId;
 
-    public ArtPicture(String author, String year, String title, int imageResId) {
+    public MangaBook(String author, String year, String title, int imageResId) {
         Author = author;
         Year = year;
         Title = title;

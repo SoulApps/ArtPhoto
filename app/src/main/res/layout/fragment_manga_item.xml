@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/fragment_art_lblTitle"
+        android:id="@+id/fragment_manga_lblTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -23,17 +23,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/fragment_art_lblAuthor"
+        android:id="@+id/fragment_manga_lblAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_art_lblYear"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_art_lblTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_manga_lblYear"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_manga_lblTitle"
         tools:layout_editor_absoluteX="13dp"
         tools:text="Author" />
 
     <TextView
-        android:id="@+id/fragment_art_lblYear"
+        android:id="@+id/fragment_manga_lblYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
 
-        app:layout_constraintStart_toEndOf="@+id/fragment_art_lblAuthor"
+        app:layout_constraintStart_toEndOf="@+id/fragment_manga_lblAuthor"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="2011" />
 </android.support.constraint.ConstraintLayout>
