@@ -1,4 +1,4 @@
-package com.example.jannu.artphoto.ui.main;
+package com.example.jannu.artphoto.ui.manga;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -7,10 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.jannu.artphoto.R;
+import com.example.jannu.artphoto.ui.main.MainActivityViewModel;
 import com.example.jannu.artphoto.utils.ConfigurationUtils;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class MangaFragment extends Fragment {
@@ -20,20 +25,25 @@ public class MangaFragment extends Fragment {
     //todo mostrar la imagen de preview por defecto
     //todo gestionar los clicks
     //todo limpiar codigo
+
+    //bindViews
+    @BindView(R.id.fragment_manga_lstManga)
+    ListView fragment_manga_lstManga;
     //vars
     private static final String STATE_SELECTED_ITEM = "STATE_SELECTED_ITEM";
     public static final int NO_ITEM_SELECTED = -1;
-    private ListView lstItems;
     private Callback mListener;
     private MainActivityViewModel mViewModel;
+    private MangaListAdapter mAdapter;
 
     // Comunication interface with activity.
     public interface Callback {
         void onItemSelected(String item, int position);
+
+        // When detail shown (even from backstack).
+        void onDetailShown(int position);
     }
 
-    public MangaFragment() {
-    }
 
     @SuppressWarnings("unused")
     public static MangaFragment newInstance() {
@@ -91,17 +101,17 @@ public class MangaFragment extends Fragment {
 
     private void showItem(int position) {
         selectItem(position);
-        mListener.onItemSelected((String) lstItems.getItemAtPosition(position), position);
+        mListener.onItemSelected((String) fragment_manga_lstManga.getItemAtPosition(position), position);
     }
 
-    private void selectItem(int position) {
+    public void selectItem(int position) {
         if (position >= 0) {
-            lstItems.setItemChecked(position, true);
-            lstItems.setSelection(position);
+            fragment_manga_lstManga.setItemChecked(position, true);
+            fragment_manga_lstManga.setSelection(position);
         }
         else {
-            lstItems.setItemChecked(mViewModel.getSelectedItem(), false);
-            lstItems.clearChoices();
+            fragment_manga_lstManga.setItemChecked(mViewModel.getSelectedItem(), false);
+            fragment_manga_lstManga.clearChoices();
         }
         mViewModel.setSelectedItem(position);
     }
@@ -113,7 +123,15 @@ public class MangaFragment extends Fragment {
     }
 
     private void initViews(View view) {
-
+        //todo mirar aqui
+        ButterKnife.bind(this,view);
+        /*int itemLayout = ConfigurationUtils.hasLandscapeOrientation(
+                //empty view
+                getActivity()) ? android.R.layout.activity_list_item : android.R.layout
+                .simple_list_item_1;*/
+        mAdapter = new MangaListAdapter(getContext(),mViewModel.getItems());
+        fragment_manga_lstManga.setAdapter(mAdapter);
+        //lstItems.setOnItemClickListener((adapterView, v, position, id) -> showItem(position));
     }
 
     // Needed in case activity is destroy because of low memory.

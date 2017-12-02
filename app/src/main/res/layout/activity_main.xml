@@ -8,11 +8,11 @@
     android:id="@+id/main_activity_frgSpace">
 
     <ImageView
-        android:id="@+id/imgArtPreview"
+        android:id="@+id/imgMangaPreview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/main_activity_verticalGuide"
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_HorizontalGuide"
         app:layout_constraintDimensionRatio="h16:9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/main_activity_verticalGuide"
+        android:id="@+id/main_activity_HorizontalGuide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -33,5 +33,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_activity_verticalGuide" />
+        app:layout_constraintTop_toBottomOf="@id/main_activity_HorizontalGuide" />
 </android.support.constraint.ConstraintLayout>

@@ -24,7 +24,7 @@ public class MainActivityViewModel extends ViewModel {
 
     public List<MangaBook> getItems() {
         if (items == null) {
-            items = new ArrayList<>(DataFiller.fillData());
+            items = DataFiller.fillData();
         }
         return items;
     }
