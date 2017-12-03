@@ -33,6 +33,8 @@ public class MangaFragment extends Fragment {
     //bindViews
     @BindView(R.id.fragment_manga_lstManga)
     ListView fragment_manga_lstManga;
+    @BindView(R.id.fragment_manga_imgMangaPreview)
+    ImageView imgPreview;
     //vars
     private static final String STATE_SELECTED_ITEM = "STATE_SELECTED_ITEM";
     public static final int NO_ITEM_SELECTED = -1;
@@ -105,6 +107,9 @@ public class MangaFragment extends Fragment {
 
     private void showItem(int position) {
         selectItem(position);
+        //select the item, place the new image and inform the listener
+        MangaBook manga = (MangaBook) fragment_manga_lstManga.getItemAtPosition(position);
+        imgPreview.setImageResource(manga.getImageResId());
         mListener.onItemSelected((MangaBook) fragment_manga_lstManga.getItemAtPosition(position), position);
     }
 

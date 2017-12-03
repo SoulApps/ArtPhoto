@@ -2,8 +2,12 @@ package com.example.jannu.artphoto.ui.detail;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.example.jannu.artphoto.R;
 import com.example.jannu.artphoto.base.model.MangaBook;
@@ -24,6 +28,19 @@ public class DetailActivity extends AppCompatActivity implements DetailFragment.
         setContentView(R.layout.activity_detail);
         obtainProfileData();
         attachDetailFragment(manga,currentPos);
+    }
+
+    //override the up navigation behaviour
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 
     private void obtainProfileData() {
