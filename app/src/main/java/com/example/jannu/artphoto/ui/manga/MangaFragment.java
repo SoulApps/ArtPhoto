@@ -2,12 +2,13 @@ package com.example.jannu.artphoto.ui.manga;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -18,21 +19,14 @@ import com.example.jannu.artphoto.utils.ConfigurationUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.OnItemClick;
 
 
 public class MangaFragment extends Fragment {
-    //todo change methods
-    //todo cargar fragmento en main
-    //todo gestionar la interfaz del fragmento
-    //todo mostrar la imagen de preview por defecto
-    //todo gestionar los clicks
-    //todo limpiar codigo
 
     //bindViews
     @BindView(R.id.fragment_manga_lstManga)
-    ListView fragment_manga_lstManga;
+    ListView lstManga;
     @BindView(R.id.fragment_manga_imgMangaPreview)
     ImageView imgPreview;
     //vars
@@ -108,19 +102,18 @@ public class MangaFragment extends Fragment {
     private void showItem(int position) {
         selectItem(position);
         //select the item, place the new image and inform the listener
-        MangaBook manga = (MangaBook) fragment_manga_lstManga.getItemAtPosition(position);
+        MangaBook manga = (MangaBook) lstManga.getItemAtPosition(position);
         imgPreview.setImageResource(manga.getImageResId());
-        mListener.onItemSelected((MangaBook) fragment_manga_lstManga.getItemAtPosition(position), position);
+        mListener.onItemSelected((MangaBook) lstManga.getItemAtPosition(position), position);
     }
 
     public void selectItem(int position) {
         if (position >= 0) {
-            fragment_manga_lstManga.setItemChecked(position, true);
-            fragment_manga_lstManga.setSelection(position);
-        }
-        else {
-            fragment_manga_lstManga.setItemChecked(mViewModel.getSelectedItem(), false);
-            fragment_manga_lstManga.clearChoices();
+            lstManga.setItemChecked(position, true);
+            lstManga.setSelection(position);
+        } else {
+            lstManga.setItemChecked(mViewModel.getSelectedItem(), false);
+            lstManga.clearChoices();
         }
         mViewModel.setSelectedItem(position);
     }
@@ -132,20 +125,27 @@ public class MangaFragment extends Fragment {
     }
 
     private void initViews(View view) {
-        //todo mirar aqui
-        ButterKnife.bind(this,view);
-        /*int itemLayout = ConfigurationUtils.hasLandscapeOrientation(
-                //empty view
-                getActivity()) ? android.R.layout.activity_list_item : android.R.layout
-                .simple_list_item_1;*/
-        mAdapter = new MangaListAdapter(getContext(),mViewModel.getItems());
-        fragment_manga_lstManga.setAdapter(mAdapter);
+        ButterKnife.bind(this, view);
+        mAdapter = new MangaListAdapter(getContext(), mViewModel.getItems());
+        lstManga.setAdapter(mAdapter);
         //lstItems.setOnItemClickListener((adapterView, v, position, id) -> showItem(position));
     }
+    //on item click we show the new activity and select the item.
     @OnItemClick(R.id.fragment_manga_lstManga)
-    void onMangaListItemClick(int position){
+    void onMangaListItemClick(AdapterView<?> parent, View view, int position, long id){
+        //change the color of the actual item
+        if(mViewModel.getSelectedItem() != -1){
+            mAdapter.getView(mViewModel.getSelectedItem(), view, parent).setBackgroundColor(Color.MAGENTA);
+        }
         showItem(position);
+        setColor(view, position);
     }
+
+    private void setColor(View view, int position) {
+        view.setBackgroundColor(Color.GRAY);
+        mAdapter.notifyDataSetChanged();
+    }
+
     // Needed in case activity is destroy because of low memory.
     @Override
     public void onSaveInstanceState(Bundle outState) {

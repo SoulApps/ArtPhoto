@@ -34,7 +34,6 @@ public class DetailActivity extends AppCompatActivity implements DetailFragment.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 onBackPressed();
                 return true;
@@ -69,6 +68,5 @@ public class DetailActivity extends AppCompatActivity implements DetailFragment.
 
     @Override
     public void onDetailShown(int position) {
-        //todo rellenar
     }
 }

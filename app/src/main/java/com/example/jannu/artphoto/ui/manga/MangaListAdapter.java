@@ -1,6 +1,8 @@
 package com.example.jannu.artphoto.ui.manga;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,6 +71,7 @@ public class MangaListAdapter extends BaseAdapter {
     private void onBindViewHolder(ViewHolder holder, int position) {
         holder.bind(mData.get(position));
     }
+
 
     static class ViewHolder {
         @BindView(R.id.fragment_manga_lblAuthor)

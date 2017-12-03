@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.example.jannu.artphoto.R;
+import com.example.jannu.artphoto.base.model.DataFiller;
 import com.example.jannu.artphoto.base.model.MangaBook;
 import com.example.jannu.artphoto.ui.detail.DetailActivity;
 import com.example.jannu.artphoto.ui.detail.DetailFragment;
@@ -21,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements MangaFragment.Cal
 
     @BindView(R.id.fragment_manga_imgMangaPreview)
     ImageView imgMangaPreview;
-    //todo poner imagen al iniciar la actividad por primera vez
     private static final String TAG_MAIN_FRAGMENT = "TAG_MAIN_FRAGMENT";
     private static final String TAG_DETAIL_FRAGMENT = "TAG_DETAIL_FRAGMENT";
     private MangaBook selectedBook;
@@ -36,12 +36,19 @@ public class MainActivity extends AppCompatActivity implements MangaFragment.Cal
             FragmentUtils.replaceFragment(getSupportFragmentManager(), R.id.main_activity_frgSpace,
                     MangaFragment.newInstance(), TAG_MAIN_FRAGMENT);
         }
-        /*if (ConfigurationUtils.hasLandscapeOrientation(this)
+        if (ConfigurationUtils.hasLandscapeOrientation(this)
                 && getSupportFragmentManager().findFragmentByTag(TAG_DETAIL_FRAGMENT) == null) {
-            FragmentUtils.replaceFragment(getSupportFragmentManager(), R.id.flDetail,
-                    DetailFragment.newInstance(getString(R.string.main_activity_no_item),
-                            MainFragment.NO_ITEM_SELECTED), TAG_MAIN_FRAGMENT);
-        }*/
+            FragmentUtils.replaceFragment(getSupportFragmentManager(), R.id.main_activity_frgSpaceRight,
+                    DetailFragment.newInstance(null,-1), TAG_DETAIL_FRAGMENT);
+        }
+        if (ConfigurationUtils.hasLandscapeOrientation(this)) {
+            if(getSupportFragmentManager().findFragmentByTag(TAG_MAIN_FRAGMENT) == null){
+
+            }else{
+
+            }
+
+        }
 
     }
 
